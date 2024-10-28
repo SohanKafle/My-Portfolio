@@ -7,6 +7,11 @@
     scroll-behavior: smooth;
 }
 
+html,
+body {
+    overflow-x: hidden;
+}
+
 a {
     text-decoration: none;
     color: #fff;
@@ -27,14 +32,19 @@ body {
     font-size: 16px;
     line-height: 24px;
     background-color: #202020;
-    padding-top: 90px;
+    padding-top: 70px;
+    overflow-x: hidden;
 }
 
 .container {
-    max-width: 1170px;
     width: 100%;
     margin: auto;
     padding: 0 15px;
+}
+
+.container,
+section {
+    max-width: 100%;
 }
 
 /*---------------------------Header Section---------------------------*/
@@ -44,8 +54,11 @@ body {
     left: 0;
     width: 100%;
     z-index: 1000;
-    background-color: #202020;
-    padding: 15px 0;
+    background-color: rgba(32, 32, 32, 0.7);
+    /* Semi-transparent background */
+    backdrop-filter: blur(10px);
+    /* Apply blur effect */
+    padding: 5px 0;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     transition: padding 0.3s ease;
 }
@@ -106,6 +119,7 @@ body {
     justify-content: space-around;
     align-items: center;
     padding-top: 5rem;
+    overflow: hidden;
 }
 
 .FirstElement.adjusted-padding {
@@ -167,10 +181,20 @@ body {
     transform: rotate(360deg);
 }
 
+#name {
+    color: #fed700;
+    font-size: 3rem;
+    min-height: 3.6rem;
+    display: inline-block;
+    overflow: hidden;
+    line-height: 1.2;
+    transition: opacity 0.3s ease;
+}
+
 /*---------------------------About Section---------------------------*/
 
 .about-area {
-    padding-top: 130px;
+    padding-top: 3rem;
     background-color: #202020;
 }
 
@@ -254,10 +278,11 @@ body {
 
 /*---------------------------Education & Internship Section---------------------------*/
 
+
 .education-content .row {
     display: flex;
     flex-wrap: wrap;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 }
 
 .education-content .title {
@@ -286,10 +311,12 @@ body {
 }
 
 .education-content h3.title {
-    font-size: 24px;
-    margin-bottom: 30px;
-    font-weight: 700;
+    font-size: 30px;
+    line-height: 40px;
+    color: #fed700;
+    margin-bottom: 20px;
 }
+
 
 .education-content .timeline {
     padding: 30px 15px;
@@ -301,7 +328,7 @@ body {
 .education-content .timeline-item {
     position: relative;
     padding-left: 37px;
-    padding-bottom: 30px;
+    padding-bottom: 20px;
 }
 
 .education-content .timeline-item:last-child {
@@ -341,11 +368,6 @@ body {
 }
 
 /*---------------------------Projects Section---------------------------*/
-
-.project-content {
-    padding: 90px 0;
-}
-
 .project-title {
     margin-bottom: 60px;
     text-align: center;
@@ -396,7 +418,11 @@ body {
 }
 
 .project p {
-    text-align: justify;
+    text-align: justify; 
+    margin: 0; 
+    padding: 0; 
+    letter-spacing: normal; 
+    word-spacing: normal; 
 }
 
 .project:hover {
@@ -417,43 +443,41 @@ body {
     text-transform: capitalize;
 }
 
-/* Adjust the container to take full width */
 #skills .listProject {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between; /* Add space between items */
+    justify-content: space-between;
     gap: 20px;
     padding: 20px;
     max-width: 100%;
     box-sizing: border-box;
 }
 
-/* Adjust item to cover full width on larger screens */
 #skills .item {
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 10px;
     overflow: hidden;
-    flex: 1 1 calc(25% - 20px); /* Each item takes 25% width minus gap */
+    flex: 1 1 calc(25% - 20px);
     box-sizing: border-box;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* On hover, add slight transform effect */
+
 #skills .item:hover {
     transform: translateY(-10px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-/* Ensure image takes full width of item */
+
 #skills .item img {
     width: 100%;
     height: auto;
     display: block;
 }
 
-/* Center align text in the items */
+
 #skills .name {
     padding: 15px;
     font-size: 1.2em;
@@ -462,7 +486,7 @@ body {
     text-align: center;
 }
 
-/* Icon styling */
+
 .item i {
     font-size: 50px;
     margin-top: 2rem;
@@ -470,19 +494,19 @@ body {
     color: #000000;
 }
 
-/* Paragraph styling */
+
 .item p {
     color: #333;
     padding: 15px;
 }
 
-/* Adjust the Tailwind icon */
 #tailwind-css {
     font-size: 50px;
     margin-top: 2rem;
     margin-bottom: 1rem;
     color: #000000;
 }
+
 /* -------------------------------------- Contact Page ------------------------------------ */
 
 .contact-section {
@@ -534,6 +558,7 @@ p {
 }
 
 .contact-form {
+    margin-top: 40px;
     padding: 50px;
     text-align: center;
 }
@@ -618,16 +643,37 @@ p {
 /* -------------------------------- Footer Section ------------------------- */
 
 .footer {
-    max-width: 950px;
-    margin: 0 auto;
+    position: relative;
+    /* Allow absolute positioning of pseudo-elements */
+    width: 100%;
+    /* Make the footer full width */
     padding: 15px 0 26px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
     color: rgba(255, 255, 255, 0.4);
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
 }
+
+/* Pseudo-element for the border */
+.footer::before {
+    content: '';
+    position: absolute;
+    /* Position it absolutely within the footer */
+    left: 3rem;
+    /* Align to the left */
+    right: 3rem;
+    /* Align to the right */
+    top: 0;
+    /* Position it at the top of the footer */
+    height: 1px;
+    /* Height of the border */
+    background-color: rgba(255, 255, 255, 0.1);
+    /* Color of the border */
+    z-index: -1;
+    /* Place it behind the footer content */
+}
+
 
 .footer .message {
     font-size: 12px;
@@ -674,6 +720,7 @@ p {
     .container {
         max-width: 970px;
     }
+
 }
 
 @media (max-width: 1050px) {
@@ -687,6 +734,23 @@ p {
         align-items: center;
         text-align: center;
     }
+
+}
+
+@media (min-width: 1024px) {
+    .about {
+        padding: 2rem;
+    }
+
+    .education-content {
+        padding: 2rem;
+    }
+
+    .project-content {
+        padding: 2rem;
+    }
+
+
 }
 
 /* Tablet layout */
@@ -740,6 +804,14 @@ p {
         color: #e5e5e5;
     }
 
+    .profile-text h1 {
+        font-size: 2.5rem;
+    }
+
+    #name {
+        min-height: 3rem;
+    }
+
     .profile-text {
         width: 100%;
         padding: 20px;
@@ -756,6 +828,10 @@ p {
         margin-bottom: 30px;
     }
 
+    .about-content h4 {
+        text-align: center;
+    }
+
     .about-content,
     .about-skills {
         flex: 1 1 100%;
@@ -764,7 +840,8 @@ p {
 
     .education-content .row {
         flex-direction: column;
-        margin-bottom: 50px;
+        margin-bottom: 30px;
+        margin-top: 30px;
     }
 
     .education-content .row .education,
@@ -785,9 +862,22 @@ p {
         margin-bottom: 20px;
     }
 
+    #skills {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 0;
+        padding: 0;
+        flex-direction: column;
+        align-items: center;
+    }
+
     #skills .item {
         width: 100%;
-        max-width: 300px;
+        max-width: 500px;
+        flex: 1 1 auto;
+        margin: 0;
+        box-sizing: border-box;
     }
 
     .contact-in {
@@ -795,15 +885,21 @@ p {
         align-items: center;
     }
 
-    .contact-map,
-    .contact-form {
+    .contact-map {
         width: 100%;
         margin-bottom: 20px;
+    }
+
+    .contact-form {
+        width: 100%;
+        padding: 20px;
+        margin-top: 5px;
     }
 
     .contact-map iframe {
         height: 300px;
     }
+
 
     .contact-header h1 {
         font-size: 32px;
@@ -812,17 +908,5 @@ p {
 
     .contact-form-btn {
         width: 90%;
-    }
-}
-
-@media (max-width: 1024px) {
-    #skills .item {
-        flex: 1 1 calc(50% - 20px); /* Take 50% width on tablets */
-    }
-}
-
-@media (max-width: 768px) {
-    #skills .item {
-        flex: 1 1 calc(100% - 20px); /* Full width on mobile */
     }
 }
