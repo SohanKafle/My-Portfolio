@@ -1,3 +1,15 @@
+
+// Toggle the navbar menu
+function toggleMenu() {
+  const navbar = document.querySelector('.navbar');
+  if (navbar) {
+    navbar.classList.toggle('show'); // Toggle the 'show' class
+    console.log('Navbar is now', navbar.classList.contains('show') ? 'visible' : 'hidden');
+  } else {
+    console.error('Navbar not found');
+  }
+}
+
 $(document).ready(function () {
   // Sticky header
   $(window).scroll(function () {
@@ -68,22 +80,28 @@ $(document).ready(function () {
   });
 
   // Contact form to excel sheet
-  const scriptURL = 'https://script.google.com/macros/s/AKfycbzUSaaX3XmlE5m9YLOHOBrRuCh2Ohv49N9bs4bew7xPd1qlgpvXtnudDs5Xhp3jF-Fx/exec';
-  const form = document.forms['submitToGoogleSheet'];
-  const msg = document.getElementById("msg");
+  // const scriptURL = 'https://script.google.com/macros/s/AKfycbzUSaaX3XmlE5m9YLOHOBrRuCh2Ohv49N9bs4bew7xPd1qlgpvXtnudDs5Xhp3jF-Fx/exec';
+  // const form = document.forms['submitToGoogleSheet'];
+  // const msg = document.getElementById("msg");
 
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-    fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-      .then(response => {
-        msg.innerHTML = "Message sent successfully";
-        setTimeout(function () {
-          msg.innerHTML = ""
-        }, 5000);
-        form.reset();
-      })
-      .catch(error => console.error('Error!', error.message));
-  });
+  // form.addEventListener('submit', e => {
+  //   e.preventDefault();
+  //   fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+  //     .then(response => {
+  //       msg.innerHTML = "Message sent successfully";
+  //       setTimeout(function () {
+  //         msg.innerHTML = ""
+  //       }, 5000);
+  //       form.reset();
+  //     })
+  //     .catch(error => console.error('Error!', error.message));
+  // });
+
+  // Bind the click event to the toggle menu button if it exists
+  const toggleButton = document.querySelector('.navbar-toggle');
+  if (toggleButton) {
+    toggleButton.addEventListener('click', toggleMenu);
+  }
 });
 
 // Update active section function
@@ -151,13 +169,6 @@ window.onload = function () {
   currentText = texts[textIndex]; // Initialize the first text
   type(); // Start typing effect
 };
-
-// Toggle the navbar menu
-function toggleMenu() {
-  const navbar = document.querySelector('.navbar');
-  navbar.classList.toggle('show'); // Toggle the 'show' class
-  console.log('Navbar is now', navbar.classList.contains('show') ? 'visible' : 'hidden');
-}
 
 // Set the current year 
 const currentYear = new Date().getFullYear();
