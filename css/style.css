@@ -907,31 +907,29 @@ p {
     }
 }
 
-/* Mobile-specific styles */
 @media (max-width: 768px) {
-    .header ul {
-        flex-direction: column;
-        max-height: 0;
-        overflow: hidden;
-        opacity: 0;
-        transition: opacity 0.3s ease, max-height 0.3s ease;
-        will-change: opacity, max-height; /* Suggest GPU acceleration */
-    }
-
-    .header ul.show {
-        max-height: 300px; /* Adjust as needed */
-        opacity: 1;
-    }
-
     .navbar {
+        display: none; /* Hide by default for mobile */
         flex-direction: column; /* Stack items vertically */
+        background-color: rgba(32, 32, 32, 0.9); /* Background color for the dropdown */
+        padding: 10px; /* Add some padding */
+    }
+
+    .navbar.show {
+        display: flex; /* Show the navbar when it has the 'show' class */
     }
 
     .menu_icon {
-        display: block; /* Show menu icon on mobile */
+        display: block; /* Ensure the menu icon is displayed on mobile */
+    }
+}
+
+@media (min-width: 769px) {
+    .navbar {
+        display: flex; /* Show navbar items normally on desktop */
     }
 
-    .navbar li {
-        margin: 10px 0; /* Add space between items */
+    .menu_icon {
+        display: none; /* Hide menu icon on larger screens */
     }
 }

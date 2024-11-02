@@ -156,7 +156,9 @@ window.onload = function () {
 function toggleMenu() {
   const navbar = document.querySelector('.navbar');
   navbar.classList.toggle('show'); // Toggle the 'show' class
+  console.log('Navbar is now', navbar.classList.contains('show') ? 'visible' : 'hidden');
 }
+
 
 // Set the current year 
 const currentYear = new Date().getFullYear();
