@@ -1,6 +1,5 @@
 $(document).ready(function () {
-
-  //sticky header
+  // Sticky header
   $(window).scroll(function () {
     if ($(this).scrollTop() > 1) {
       $(".header-area").addClass("sticky");
@@ -39,12 +38,16 @@ $(document).ready(function () {
       );
     }
 
+    // Close the menu on item click for mobile view
+    if ($('.navbar').hasClass('show')) {
+      toggleMenu();
+    }
+
     $(".header ul li a").removeClass("active");
     $(this).addClass("active");
   });
 
-
-  //Initial content revealing js
+  // Initial content revealing js
   ScrollReveal({
     distance: "100px",
     duration: 2000,
@@ -64,26 +67,26 @@ $(document).ready(function () {
     origin: "bottom"
   });
 
-  //contact form to excel sheet
+  // Contact form to excel sheet
   const scriptURL = 'https://script.google.com/macros/s/AKfycbzUSaaX3XmlE5m9YLOHOBrRuCh2Ohv49N9bs4bew7xPd1qlgpvXtnudDs5Xhp3jF-Fx/exec';
-  const form = document.forms['submitToGoogleSheet']
-  const msg = document.getElementById("msg")
+  const form = document.forms['submitToGoogleSheet'];
+  const msg = document.getElementById("msg");
 
   form.addEventListener('submit', e => {
-    e.preventDefault()
+    e.preventDefault();
     fetch(scriptURL, { method: 'POST', body: new FormData(form) })
       .then(response => {
-        msg.innerHTML = "Message sent successfully"
+        msg.innerHTML = "Message sent successfully";
         setTimeout(function () {
           msg.innerHTML = ""
-        }, 5000)
-        form.reset()
+        }, 5000);
+        form.reset();
       })
-      .catch(error => console.error('Error!', error.message))
-  })
-
+      .catch(error => console.error('Error!', error.message));
+  });
 });
 
+// Update active section function
 function updateActiveSection() {
   var scrollPosition = $(window).scrollTop();
 
@@ -110,15 +113,14 @@ function updateActiveSection() {
   });
 }
 
-
 // Typing effect on Name
 const nameElement = document.getElementById('name');
 const texts = [
   "Sohan Kafle",
   "a Student",
   "a Frontend Developer"
- 
 ];
+
 let textIndex = 0;
 let charIndex = 0;
 let currentText = '';
@@ -149,7 +151,6 @@ window.onload = function () {
   currentText = texts[textIndex]; // Initialize the first text
   type(); // Start typing effect
 };
-
 
 // Toggle the navbar menu
 function toggleMenu() {
