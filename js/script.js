@@ -159,7 +159,6 @@ function toggleMenu() {
   console.log('Navbar is now', navbar.classList.contains('show') ? 'visible' : 'hidden');
 }
 
-
 // Set the current year 
 const currentYear = new Date().getFullYear();
 document.getElementById('currentYear').textContent = currentYear;
