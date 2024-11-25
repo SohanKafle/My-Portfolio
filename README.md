@@ -1,7 +1,7 @@
 # Sohan Kafle's Portfolio
 
 Welcome to my personal portfolio website! 🌐 [sohankafle.com.np](https://sohankafle.com.np/)  
-This website showcases my skills, projects, experience, and journey as a developer.
+This website showcases my skills, projects, experience, and journey as a student/developer.
 
 ## 🌟 Features
 
