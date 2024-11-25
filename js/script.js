@@ -1,4 +1,3 @@
-
 // Toggle the navbar menu
 function toggleMenu() {
   const navbar = document.querySelector('.navbar');
@@ -10,85 +9,38 @@ function toggleMenu() {
   }
 }
 
-$(document).ready(function () {
-  // Sticky header
-  $(window).scroll(function () {
-    if ($(this).scrollTop() > 1) {
-      $(".header-area").addClass("sticky");
-    } else {
-      $(".header-area").removeClass("sticky");
-    }
+// Debounce function for optimizing scroll events
+function debounce(func, wait) {
+  let timeout;
+  return function (...args) {
+    const context = this;
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(context, args), wait);
+  };
+}
 
-    // Update the active section in the header
-    updateActiveSection();
-  });
+// Smooth scroll using native API
+$(".header ul li a").click(function (e) {
+  e.preventDefault();
+  const target = $(this).attr("href");
+  const section = document.querySelector(target);
 
-  $(".header ul li a").click(function (e) {
-    e.preventDefault();
-
-    var target = $(this).attr("href");
-
-    if ($(target).hasClass("active-section")) {
-      return;
-    }
-
-    if (target === "#home") {
-      $("html, body").animate(
-        {
-          scrollTop: 0
-        },
-        500
-      );
-    } else {
-      var offset = $(target).offset().top - 40;
-
-      $("html, body").animate(
-        {
-          scrollTop: offset
-        },
-        500
-      );
-    }
-
-    // Close the menu on item click for mobile view
-    if ($('.navbar').hasClass('show')) {
-      toggleMenu();
-    }
-
-    $(".header ul li a").removeClass("active");
-    $(this).addClass("active");
-  });
-
-  // Initial content revealing js
-  ScrollReveal({
-    distance: "100px",
-    duration: 2000,
-    delay: 200
-  });
-
-  ScrollReveal().reveal(".header a, .profile-photo, .about-content, .education", {
-    origin: "left"
-  });
-  ScrollReveal().reveal(".header ul, .profile-text, .about-skills, .internship", {
-    origin: "right"
-  });
-  ScrollReveal().reveal(".project-title, .contact-header, .listProject", {
-    origin: "top"
-  });
-  ScrollReveal().reveal(".projects, .contact-in, .skill", {
-    origin: "bottom"
-  });
-
-  // Bind the click event to the toggle menu button if it exists
-  const toggleButton = document.querySelector('.navbar-toggle');
-  if (toggleButton) {
-    toggleButton.addEventListener('click', toggleMenu);
+  if (section) {
+    section.scrollIntoView({ behavior: "smooth", block: "start" });
   }
+
+  // Close the menu on item click for mobile view
+  if ($('.navbar').hasClass('show')) {
+    toggleMenu();
+  }
+
+  $(".header ul li a").removeClass("active");
+  $(this).addClass("active");
 });
 
 // Update active section function
 function updateActiveSection() {
-  var scrollPosition = $(window).scrollTop();
+  const scrollPosition = $(window).scrollTop();
 
   // Checking if scroll position is at the top of the page
   if (scrollPosition === 0) {
@@ -99,9 +51,9 @@ function updateActiveSection() {
 
   // Iterate through each section and update the active class in the header
   $("section").each(function () {
-    var target = $(this).attr("id");
-    var offset = $(this).offset().top;
-    var height = $(this).outerHeight();
+    const target = $(this).attr("id");
+    const offset = $(this).offset().top;
+    const height = $(this).outerHeight();
 
     if (
       scrollPosition >= offset - 40 &&
@@ -147,11 +99,54 @@ function deleteText() {
   }
 }
 
+// Document ready function
+$(document).ready(function () {
+  // Sticky header
+  $(window).scroll(function () {
+    if ($(this).scrollTop() > 1) {
+      $(".header-area").addClass("sticky");
+    } else {
+      $(".header-area").removeClass("sticky");
+    }
+  });
+
+  // Debounce the scroll event for performance
+  $(window).scroll(debounce(updateActiveSection, 100));
+
+  // Initial content revealing with ScrollReveal
+  ScrollReveal({
+    distance: "100px",
+    duration: 1500,
+    delay: 100,
+    reset: false
+  });
+
+  ScrollReveal().reveal(".header a, .profile-photo, .about-content, .education", {
+    origin: "left"
+  });
+  ScrollReveal().reveal(".header ul, .profile-text, .about-skills, .internship", {
+    origin: "right"
+  });
+  ScrollReveal().reveal(".project-title, .contact-header, .listProject", {
+    origin: "top"
+  });
+  ScrollReveal().reveal(".projects, .contact-in, .skill", {
+    origin: "bottom"
+  });
+
+  // Bind the click event to the toggle menu button if it exists
+  const toggleButton = document.querySelector('.navbar-toggle');
+  if (toggleButton) {
+    toggleButton.addEventListener('click', toggleMenu);
+  }
+});
+
+// Set the current year
+const currentYear = new Date().getFullYear();
+document.getElementById('currentYear').textContent = currentYear;
+
+// Typing effect initialization
 window.onload = function () {
   currentText = texts[textIndex]; // Initialize the first text
   type(); // Start typing effect
 };
-
-// Set the current year 
-const currentYear = new Date().getFullYear();
-document.getElementById('currentYear').textContent = currentYear;
