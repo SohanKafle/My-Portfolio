@@ -48,16 +48,17 @@ section {
 }
 
 /*---------------------------Header Section---------------------------*/
+/* Header Styles */
 .header-area {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1000;
-    background-color: rgba(32, 32, 32, 0.7);
+    background-color: rgba(32, 32, 32, 0.9); /* Slightly darker for better readability */
     backdrop-filter: blur(7px);
-    padding: 5px 0;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px 0; /* Larger padding for easier tapping on mobile */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Enhance shadow for better contrast */
     transition: padding 0.3s ease;
 }
 
@@ -68,20 +69,15 @@ section {
 }
 
 .logo img {
-    height: 60px;
+    height: 50px; /* Adjust for better mobile fit */
 }
 
-.header ul {
-    display: flex;
-    max-height: none;
-    opacity: 1;
-    overflow: visible;
-    transition: max-height 0.3s ease-out;
-}
-
+/* Navbar Default (Desktop View) */
 .navbar {
     display: flex;
     align-items: center;
+    list-style: none;
+    transition: transform 0.3s ease, opacity 0.3s ease; /* Add GPU-optimized transitions */
 }
 
 .navbar li {
@@ -91,19 +87,14 @@ section {
 .navbar li a {
     text-transform: capitalize;
     color: #fff;
+    text-decoration: none;
+    font-size: 16px;
     transition: color 0.3s ease;
 }
 
 .navbar li a:hover,
 .navbar li a.active {
     color: #fed700;
-}
-
-.menu_icon {
-    display: none; /* Hide on desktop */
-    color: #fff;
-    font-size: 18px;
-    cursor: pointer;
 }
 
 
@@ -909,29 +900,63 @@ p {
 
 @media (max-width: 767px) {
     .navbar {
-        display: none; /* Hide by default for mobile */
+        position: absolute;
+        top: 60px; /* Positioned below the header */
+        right: 0;
+        width: 100%; /* Full width on mobile */
         flex-direction: column; /* Stack items vertically */
-        background-color: rgba(32, 32, 32, 0.9); /* Background color for the dropdown */
-        padding: 10px; /* Add some padding */
-        position: absolute; /* Position the menu */
-        top: 60px; /* Position below the header */
-        right: 0; /* Align to the right */
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Shadow for the popup */
-        width: 100%; /* Full width */
+        background-color: rgba(32, 32, 32, 0.95); /* Slightly opaque background */
+        padding: 15px 0; /* Spacing for better tapping experience */
+        transform: translateY(-100%); /* Hidden by default (slide up) */
+        opacity: 0; /* Hidden visually */
+        visibility: hidden; /* Screen reader optimization */
+        transition: transform 0.3s ease, opacity 0.3s ease; /* Smooth transitions */
+        z-index: 999; /* Ensure it overlays other content */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Shadow for better contrast */
     }
 
     .navbar.show {
-        display: flex; /* Show the navbar when it has the 'show' class */
+        transform: translateY(0); /* Slide down */
+        opacity: 1; /* Fully visible */
+        visibility: visible;
+    }
+
+    .navbar li {
+        margin: 10px 0; /* Spacing between items */
+        text-align: center; /* Centered text for mobile */
+    }
+
+    .navbar li a {
+        color: #fff; /* White text for better visibility */
+        font-size: 16px; /* Slightly larger for easier tapping */
+        text-transform: capitalize;
+        padding: 10px; /* Tap-friendly padding */
+        transition: color 0.3s ease;
+    }
+
+    .navbar li a:hover,
+    .navbar li a.active {
+        color: #fed700; /* Highlighted color */
     }
 
     .menu_icon {
         display: block; /* Show menu icon on mobile */
+        font-size: 24px; /* Larger icon for better visibility */
+        color: #fff; /* White icon color */
+        cursor: pointer; /* Indicate clickability */
+        z-index: 1000; /* Ensure it's on top of the navbar */
     }
 }
 
-@media (min-width: 769px) {
+@media (min-width: 768px) {
     .navbar {
-        display: flex; /* Show navbar items normally on desktop */
+        display: flex; /* Normal layout on larger screens */
+        position: static; /* Default position */
+        transform: none; /* Remove transformations */
+        opacity: 1; /* Fully visible */
+        visibility: visible; /* Accessible */
+        background-color: transparent; /* No background for desktop */
+        box-shadow: none; /* Remove shadow */
     }
 
     .menu_icon {

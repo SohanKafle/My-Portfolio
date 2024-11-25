@@ -34,11 +34,12 @@ $(".header ul li a").click(function (e) {
     toggleMenu();
   }
 
+  // Active link highlighting
   $(".header ul li a").removeClass("active");
   $(this).addClass("active");
 });
 
-// Update active section function
+// Update active section based on scroll position
 function updateActiveSection() {
   const scrollPosition = $(window).scrollTop();
 
@@ -141,7 +142,7 @@ $(document).ready(function () {
   }
 });
 
-// Set the current year
+// Set the current year dynamically
 const currentYear = new Date().getFullYear();
 document.getElementById('currentYear').textContent = currentYear;
 
