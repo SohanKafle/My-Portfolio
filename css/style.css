@@ -950,16 +950,16 @@ p {
 
 @media (min-width: 768px) {
     .navbar {
-        display: flex; /* Normal layout on larger screens */
-        position: static; /* Default position */
-        transform: none; /* Remove transformations */
-        opacity: 1; /* Fully visible */
-        visibility: visible; /* Accessible */
-        background-color: transparent; /* No background for desktop */
-        box-shadow: none; /* Remove shadow */
+        display: flex; 
+        position: static; 
+        transform: none;
+        opacity: 1; 
+        visibility: visible; 
+        background-color: transparent; 
+        box-shadow: none; 
     }
 
     .menu_icon {
-        display: none; /* Hide menu icon on larger screens */
+        display: none;
     }
 }
