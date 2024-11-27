@@ -48,7 +48,6 @@ section {
 }
 
 /*---------------------------Header Section---------------------------*/
-/*---------------------------Header Section---------------------------*/
 /* Header Styles */
 .header-area {
     position: fixed;
@@ -73,26 +72,16 @@ section {
     height: 50px; /* Adjust for better mobile fit */
 }
 
-/* Navbar Default (Hidden by default) */
+/* Navbar Default (Desktop View) */
 .navbar {
-    visibility: hidden; /* Hide initially */
-    opacity: 0; /* Transparent */
-    transform: translateY(-20px); /* Slide out of view */
-    position: absolute; /* Dropdown effect */
-    top: 100%; /* Below the header */
-    right: 0;
-    background-color: rgba(32, 32, 32, 0.95); /* Background for mobile */
-    width: 100%; /* Full width for mobile */
-    flex-direction: column; /* Vertical alignment */
+    display: flex;
+    align-items: center;
     list-style: none;
-    padding: 10px 0;
-    z-index: 999;
-    transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+    transition: transform 0.3s ease, opacity 0.3s ease; /* Add GPU-optimized transitions */
 }
 
-/* Navbar items */
 .navbar li {
-    margin: 10px 0; /* Vertical spacing for mobile items */
+    margin: 0 15px;
 }
 
 .navbar li a {
@@ -106,37 +95,6 @@ section {
 .navbar li a:hover,
 .navbar li a.active {
     color: #fed700;
-}
-
-/* Navbar Visible (when 'show' class is applied) */
-.navbar.show {
-    visibility: visible; /* Make it visible */
-    opacity: 1; /* Fully opaque */
-    transform: translateY(0); /* Slide into view */
-}
-
-/* Menu Icon for Mobile */
-.menu_icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size: 24px;
-    color: #fff;
-}
-
-.menu_icon i {
-    transition: transform 0.3s ease;
-}
-
-.menu_icon:hover i {
-    transform: rotate(90deg); /* Rotate on hover for effect */
-}
-
-/* Sticky Header */
-.sticky {
-    background-color: rgba(32, 32, 32, 1); /* Solid color when sticky */
-    padding: 5px 0; /* Adjust padding for sticky view */
 }
 
 
