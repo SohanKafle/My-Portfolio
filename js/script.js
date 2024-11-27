@@ -2,7 +2,7 @@
 function toggleMenu() {
   const navbar = document.querySelector('.navbar');
   if (navbar) {
-    navbar.classList.toggle('show'); // Toggle visibility class
+    navbar.classList.toggle('show'); // Toggle the 'show' class
     console.log('Navbar is now', navbar.classList.contains('show') ? 'visible' : 'hidden');
   } else {
     console.error('Navbar not found');
@@ -125,7 +125,7 @@ $(document).ready(function () {
   ScrollReveal().reveal(".header a, .profile-photo, .about-content, .education", {
     origin: "left"
   });
-  ScrollReveal().reveal(".profile-text, .about-skills, .internship", {
+  ScrollReveal().reveal(" .profile-text, .about-skills, .internship", {
     origin: "right"
   });
   ScrollReveal().reveal(".project-title, .contact-header, .listProject", {
@@ -135,13 +135,19 @@ $(document).ready(function () {
     origin: "bottom"
   });
 
-  // Set the current year dynamically
-  const currentYear = new Date().getFullYear();
-  document.getElementById('currentYear').textContent = currentYear;
-
-  // Typing effect initialization
-  window.onload = function () {
-    currentText = texts[textIndex]; // Initialize the first text
-    type(); // Start typing effect
-  };
+  // Bind the click event to the toggle menu button if it exists
+  const toggleButton = document.querySelector('.navbar-toggle');
+  if (toggleButton) {
+    toggleButton.addEventListener('click', toggleMenu);
+  }
 });
+
+// Set the current year dynamically
+const currentYear = new Date().getFullYear();
+document.getElementById('currentYear').textContent = currentYear;
+
+// Typing effect initialization
+window.onload = function () {
+  currentText = texts[textIndex]; // Initialize the first text
+  type(); // Start typing effect
+};
