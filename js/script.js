@@ -125,7 +125,7 @@ $(document).ready(function () {
   ScrollReveal().reveal(".header a, .profile-photo, .about-content, .education", {
     origin: "left"
   });
-  ScrollReveal().reveal(".header ul, .profile-text, .about-skills, .internship", {
+  ScrollReveal().reveal(".profile-text, .about-skills, .internship", {
     origin: "right"
   });
   ScrollReveal().reveal(".project-title, .contact-header, .listProject", {
