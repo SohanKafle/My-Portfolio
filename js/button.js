@@ -1,9 +1,6 @@
-
 let mybutton = document.getElementById("back-to-top");
 
-
 window.onscroll = function () { scrollFunction() };
-
 
 document.addEventListener("DOMContentLoaded", scrollFunction);
 
@@ -14,7 +11,6 @@ function scrollFunction() {
         mybutton.style.display = "none";
     }
 }
-
 
 mybutton.onclick = function () {
     document.body.scrollTop = 0;
