@@ -13,8 +13,8 @@
 </head>
 
 <body>
+    <div id="particles-js"></div>
     <!------------------------------------------------- Header Section -------------------------------------------->
-
     <header class="header-area">
         <div class="container">
             <div class="header">
@@ -79,7 +79,8 @@
                         <li>With a background in computer science and a keen eye for design, I specialize in building
                             web applications that are both functional and aesthetically pleasing..</li>
                         <li> I thrive in collaborative environments and enjoy working with multidisciplinary teams to
-                            bring projects from conception to completion. I'm always eager to learn new technologies and stay
+                            bring projects from conception to completion. I'm always eager to learn new technologies and
+                            stay
                             updated with the latest industry trends to deliver cutting-edge solutions. </li>
                         <li> I actively seek out opportunities to expand my knowledge and skills, embracing new
                             technologies and approaches.Feel free to explore my work and get in touch if you have any
@@ -218,15 +219,31 @@
                                 <div class="timeline-item">
                                     <div class="circle-dot"></div>
                                     <h3 class="timeline-title">
+                                        Internship – Full Stack Developer
+                                    </h3>
+                                    <h4 class="timeline-title">BITS-Bitmap I.T Solution Pvt. Ltd.</h4>
+                                    <h4 class="timeline-title">
+                                        <i class="fa fa-calendar"></i> Dec 2024-Present
+                                    </h4>
+                                    <p class="timeline-text"> I’m gaining hands-on experience with Laravel for backend
+                                        development and TailwindCSS for building responsive, user-friendly interfaces,
+                                        while contributing to live projects and learning best practices in a
+                                        collaborative environment.</p>
+                                </div>
+
+                                <!-- Timeline-item -->
+                                <div class="timeline-item">
+                                    <div class="circle-dot"></div>
+                                    <h3 class="timeline-title">
                                         Digital Marketing
                                     </h3>
-                                    <h4 class="timeline-title"></h4>
+                                    <h4 class="timeline-title">Freelancer</h4>
                                     <h4 class="timeline-title">
-                                        <i class="fa fa-calendar"></i> 2024-Present
+                                        <i class="fa fa-calendar"></i> Oct 2024-Present
                                     </h4>
-                                    <p class="timeline-text">Learned about digital marketing, SEO, and social media
-                                        marketing, and how to create and manage online campaigns to promote products and
-                                        services.</p>
+                                    <p class="timeline-text">I specialize in SEO, social media management, content
+                                        strategy, and paid advertising, helping businesses grow their online presence
+                                        and achieve measurable results.</p>
                                 </div>
 
                             </div>
@@ -257,7 +274,7 @@
                     <i class="fa fa-desktop"></i>
                     <h4>Portfolio Website</h4>
                     <p>Created a portfolio website using HTML, CSS, and JavaScript. It serves as a platform to introduce
-                        myself, share my projects, and provide information about my education and internship.</p>
+                        myself, share my projects, and provide information about my education and work experiences.</p>
                 </div>
                 <!-- 3rd Project -->
                 <div class="project">
@@ -312,13 +329,79 @@
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="js/script.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS('particles-js', {
+            "particles": {
+                "number": {
+                    "value": 250,  
+                    "density": {
+                        "enable": true,
+                        "value_area": 1000
+                    }
+                },
+                "color": {
+                    "value": "#ffffff"
+                },
+                "shape": {
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    }
+                },
+                "opacity": {
+                    "value": 0.5,  
+                    "random": true,
+                    "anim": {
+                        "enable": false,
+                        "speed": 1,
+                        "opacity_min": 0.1
+                    }
+                },
+                "size": {
+                    "value": 5,  
+                    "random": true,
+                    "anim": {
+                        "enable": true,
+                        "speed": 3,
+                        "size_min": 0.1
+                    }
+                },
+                "line_linked": {
+                    "enable": false  
+                }
+            },
+            "interactivity": {
+                "detect_on": "window",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "repulse"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    }
+                },
+                "modes": {
+                    "repulse": {
+                        "distance": 40,  
+                        "duration": 1     
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+    </script>
+    
 
     <!-------------------------- Back to top -------------------------->
     <button id="back-to-top" title="Back to top">
         <i class="fa-solid fa-arrow-up"></i>
     </button>
     <script src="js/button.js"></script>
+
 </body>
 
 </html>
